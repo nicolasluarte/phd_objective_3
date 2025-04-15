@@ -1,0 +1,8 @@
+animal_id,group,total_cell_number,non_pvn_oxa_cfos_positive,non_pvn_oxa_cfos_positive_perc
+620,treatment,45,14,0.3111111111111111
+621,control,93,37,0.3978494623655914
+622,treatment,267,18,0.06741573033707865
+623,control,32,12,0.375
+624,treatment,355,95,0.2676056338028169
+625,control,170,72,0.4235294117647059
+628,control,95,35,0.3684210526315789
