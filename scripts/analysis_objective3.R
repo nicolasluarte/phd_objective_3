@@ -258,7 +258,7 @@ bhp2 <- bh_d %>%
     scale_fill_manual(values = c("black", "orange")) +
     scale_color_manual(values = c("black", "orange")) 
 bhp2
-
+http://127.0.0.1:30989/graphics/plot_zoom_png?width=858&height=422
 # figure ----
 
 bhp1 | bhp2 | np1 | np2
