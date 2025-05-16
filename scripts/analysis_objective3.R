@@ -42,10 +42,12 @@ summary(bh_licks_mdl)
 
 bh_licks_emm <- emmeans::emmeans(
     bh_licks_mdl,
-    pairwise ~ tipo_recompensa * group | rel_date,
+    revpairwise ~ tipo_recompensa * group | rel_date,
     type = "response"
 )
 bh_licks_emm
+
+broom.mixed::tidy(bh_licks_emm$contrasts, conf.int = TRUE) %>% view
 
 bh_events_mdl <- glmmTMB::glmmTMB(
     data = bh_d,
@@ -56,10 +58,12 @@ summary(bh_events_mdl)
 
 bh_events_emm <- emmeans::emmeans(
     bh_events_mdl,
-    pairwise ~ tipo_recompensa * group | rel_date,
+    revpairwise ~ tipo_recompensa * group | rel_date,
     type = "response"
 )
 bh_events_emm
+
+broom.mixed::tidy(bh_events_emm$contrasts, conf.int = TRUE) %>% view
 
 
 # Neurons ----
@@ -111,10 +115,12 @@ summary(oxa_rb_cfos_mdl)
 
 oxa_rb_cfos_emm <- emmeans::emmeans(
     oxa_rb_cfos_mdl,
-    pairwise ~ group | class,
+    revpairwise ~ group | class,
     type = "response"
 )
 oxa_rb_cfos_emm
+
+broom.mixed::tidy(oxa_rb_cfos_emm$contrasts, conf.int = TRUE)
 
 
 
@@ -126,6 +132,15 @@ oxa_pos_mdl <- lm(
     oxa_plus ~ group
 )
 summary(oxa_pos_mdl)
+
+oxa_pos_emm <- emmeans::emmeans(
+    oxa_pos_mdl,
+    revpairwise ~ group,
+    type = "response"
+)
+oxa_pos_emm
+
+broom::tidy(oxa_pos_emm$contrasts, conf.int = TRUE)
 
 # p::oxa_positive_neurons ----
 
@@ -258,7 +273,6 @@ bhp2 <- bh_d %>%
     scale_fill_manual(values = c("black", "orange")) +
     scale_color_manual(values = c("black", "orange")) 
 bhp2
-http://127.0.0.1:30989/graphics/plot_zoom_png?width=858&height=422
 # figure ----
 
 bhp1 | bhp2 | np1 | np2
